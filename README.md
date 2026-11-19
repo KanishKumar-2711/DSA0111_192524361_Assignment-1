@@ -1,102 +1,60 @@
 
-#include <iostream>
-#include <string>
-using namespace std;
+# DSA01 - Assignment 1
 
-enum class Zone {
-    Inner, Middle, Outer
-};
+## Smart Metro Card System
 
-class Passenger {
-public:
-    string name;
+### About the Project
+This assignment focuses on implementing and analysing a Smart Metro Card System using C++ programming concepts.
 
-    Passenger(string n) {
-        name = n;
-    }
-};
+### Tasks Completed
 
-class FareTable {
-public:
-    static long long getFare(Zone z) {
-        switch (z) {
-            case Zone::Inner:
-                return 1000;
-            case Zone::Middle:
-                return 2000;
-            case Zone::Outer:
-                return 3000;
-        }
-        return 0;
-    }
-};
+| Task | Description |
+|---|---|
+| Task 1 | Problem Analysis |
+| Task 2 | Tokens and Constants |
+| Task 3 | Data Types |
+| Task 4 | Type Conversion |
+| Task 5 | Operators and Expressions |
+| Task 6 | Control Structures |
+| Task 7 | Procedural vs Object-Oriented Programming |
+| Task 8 | Safe Input and Output |
+| Task 9 | Testing and Validation |
+| Task 10 | Integer vs Floating-Point Calculations |
+| Task 11 | Final Design Recommendation |
+| Task 12 | Revised Metro Fare System |
 
-class Journey {
-public:
-    Zone zone;
-    bool peak;
+### Technologies Used
+- Programming Language: C++
+- Compiler: GCC (g++)
+- Repository: GitHub
 
-    Journey(Zone z, bool p) {
-        zone = z;
-        peak = p;
-    }
+### Concepts Used
+- Classes and Objects
+- Data Types
+- Enumerations
+- Switch Statements
+- Loops and Conditional Statements
+- Functions
+- Encapsulation
+- Input Validation
+- Fare Calculation
+- Testing and Debugging
 
-    long long calculateFare() {
-        long long fare = FareTable::getFare(zone);
+### How to Compile and Run
 
-        if (peak) {
-            fare += fare * 20 / 100;
-        }
+Compile a task using:
 
-        return fare;
-    }
-};
+```bash
+g++ -std=c++17 -Wall -Wextra Task01.cpp -o Task01
+```
 
-class SmartCard {
-private:
-    long long balance;
+Run on Windows:
 
-public:
-    SmartCard(long long b) {
-        balance = b;
-    }
+```powershell
+.\Task01
+```
 
-    bool canTravel(long long fare) {
-        return balance - fare >= 5000;
-    }
+Use the corresponding source filename for each task.
 
-    void deduct(long long fare) {
-        if (canTravel(fare)) {
-            balance -= fare;
-        }
-    }
-
-    long long getBalance() {
-        return balance;
-    }
-};
-
-int main() {
-    Passenger p("Kumar");
-
-    SmartCard card(10000);
-
-    Journey trip(Zone::Outer, true);
-
-    long long fare = trip.calculateFare();
-
-    cout << "Passenger: " << p.name << '\n';
-    cout << "Fare: " << fare << " paise\n";
-
-    if (card.canTravel(fare)) {
-        card.deduct(fare);
-        cout << "Journey Approved\n";
-    } else {
-        cout << "Journey Denied\n";
-    }
-
-    cout << "Remaining Balance: "
-         << card.getBalance() << " paise\n";
-
-    return 0;
-}
+### Conclusion
+The assignment demonstrates the use of C++ concepts to develop a Smart Metro Card System. It includes fare calculation, balance validation, testing, and improvements to the metro fare system.
